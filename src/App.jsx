@@ -11,12 +11,12 @@ function App() {
   
   const [cart, setCart] = useState([]);
 
- const addToCart = (p) => {
-  const exists = cart.find((item) => item.id === p.id);
+  const addToCart = (p) => {
+  setCart([...cart, p]);
+  };
 
-  if (!exists) {
-    setCart([...cart, p]);
-  }
+  const removeFromCart = (id) => {
+  setCart(cart.filter((item) => item.id !== id));
 };
   return (
 
@@ -25,9 +25,9 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<OffersToday addToCart={addToCart}/>} />
-        <Route path="/offers-today" element={<OffersToday addToCart={addToCart}/>} />
-        <Route path="/all-offers" element={<AllOffers addToCart={addToCart}/>} />
+        <Route path="/" element={<OffersToday addToCart={addToCart}   removeFromCart={removeFromCart}   cart={cart}/>} />
+        <Route path="/offers-today" element={<OffersToday addToCart={addToCart}   removeFromCart={removeFromCart}   cart={cart}/>} />
+        <Route path="/all-offers" element={<AllOffers addToCart={addToCart}   removeFromCart={removeFromCart}   cart={cart}/>} />
         <Route path="/cart" element={<Cart cart={cart} />} />
       </Routes>
     </BrowserRouter>

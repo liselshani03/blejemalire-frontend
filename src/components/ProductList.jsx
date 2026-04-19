@@ -1,17 +1,35 @@
-export default function ProductList({ products, addToCart }) {
+export default function ProductList({ products, addToCart, removeFromCart, cart }) {
   return (
     <div className="product-grid">
+      {products.map((p) => {
+        const isInCart = cart.some((item) => item.id === p.id);
 
-      {products.map((p) => (
+        return (
+          <div key={p.id} className="product-card">
+            <h2 className="product-title">{p.name}</h2>
 
-        <div key={p.id} className="product-card">
-          <h2 className="product-title">{p.name}</h2>
-          <img className="product-img" src={p.image} alt={p.name} />
-          <p>{p.price}€</p>
-          <p className="old-price">{p.oldPrice}€</p>
-          <button onClick={() => addToCart(p)}>Add To Cart</button>
-        </div>
-      ))}
+            <div className="image-wrapper">
+            <img className="product-img" src={p.image} alt={p.name} />
+            </div>
+      
+            <div className="price-row">
+            <span className="price">€{p.price}</span>
+            <span className="old-price">€{p.oldPrice}</span>
+            </div>
+
+            <span className="discountDate"  >{p.discountEndsAt}</span>
+            
+            <button
+              className={isInCart ? "btn-remove" : "btn-add"}
+              onClick={() =>
+                isInCart ? removeFromCart(p.id) : addToCart(p)
+              }
+            >
+              {isInCart ? "Remove" : "Add"}
+            </button>
+          </div>
+        );
+      })}
     </div>
   );
 }
