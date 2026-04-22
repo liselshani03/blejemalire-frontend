@@ -1,11 +1,81 @@
-nav {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 3%;
-    border-bottom: 1px solid white;
-    border-radius: 10;
-    cursor: pointer;
-    gap: 50px;
-    cursor: default;
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  /* 👇 this is what makes it taller */
+  padding: 35px 40px;
+
+  background: #240606;
+  border-bottom: 1px solid #4a0e0e;
+
+  color: #ffffff;
+
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* LOGO (no size change, just better contrast feel) */
+.logo img {
+  height: 45px;
+}
+
+/* SEARCH BAR */
+.search-bar {
+  width: 400px;
+  padding: 10px 14px;
+
+  background: #330a0a;
+  border: 1px solid #5a1212;
+
+  color: #ffffff;
+
+  border-radius: 8px;
+  outline: none;
+}
+
+/* when clicked */
+.search-bar:focus {
+  border-color: red;
+  box-shadow: 0 0 8px rgba(255, 77, 77, 0.25);
+}
+
+/* CATEGORY */
+.category-select {
+  width: 400px;
+  padding: 8px;
+
+  background: #330a0a;
+  border: 1px solid #5a1212;
+
+  color: #ffffff;
+
+  border-radius: 6px;
+}
+.category-select:focus {
+  border-color: #ff4d4d;
+  box-shadow: 0 0 8px rgba(255, 77, 77, 0.25);
+  outline: none;
+}
+
+/* LINKS */
+.nav-right {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-right a {
+  color: #f5d6d6;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* stronger hover effect */
+.nav-right a:hover {
+  color: #ff4d4d;
+  text-shadow: 0 0 8px rgba(255, 77, 77, 0.35);
+}
+
+/* subtle navbar glow (very light, not flashy) */
+.navbar {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }

@@ -1,16 +1,39 @@
 import ProductList from "../components/ProductList";
-import products from "../data/products";
 
-export default function AllOffers( { addToCart, removeFromCart, cart }) {
+export default function AllOffers({
+  products,
+  addToCart,
+  removeFromCart,
+  cart,
+  selectedCategory,
+  searchQuery
+}) {
+
+  const filteredProducts = products.filter((p) => {
+
+    const matchesCategory =
+      selectedCategory === "all" || p.category === selectedCategory;
+
+    const matchesSearch =
+      p.name.toLowerCase().includes(searchQuery.toLowerCase());
+
+    return matchesCategory && matchesSearch;
+  });
+
   return (
     <div>
       <h1>Te gjitha ofertat</h1>
-      <ProductList 
-      products={products} 
-      addToCart={addToCart}
-      removeFromCart={removeFromCart}
-      cart={cart}
-      />
+
+      {filteredProducts.length === 0 ? (
+        <p>No products found</p>
+      ) : (
+        <ProductList
+          products={filteredProducts}
+          addToCart={addToCart}
+          removeFromCart={removeFromCart}
+          cart={cart}
+        />
+      )}
     </div>
   );
 }

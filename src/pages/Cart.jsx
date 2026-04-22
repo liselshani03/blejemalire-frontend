@@ -1,4 +1,5 @@
 export default function Cart({ cart = [] }) {
+  
   return (
     <div className="cart-grid">
       {cart.map((item) => {

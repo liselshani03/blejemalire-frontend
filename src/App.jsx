@@ -4,32 +4,68 @@ import Navbar from "./components/Navbar";
 import OffersToday from "./pages/OffersToday";
 import AllOffers from "./pages/AllOffers";
 import Cart from "./pages/Cart";
-import ProductList from "./components/ProductList";
+import products from "./data/products";
 import "./App.css";
 
 function App() {
-  
   const [cart, setCart] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
 
   const addToCart = (p) => {
-  setCart([...cart, p]);
+    setCart(prev => [...prev, p]);
   };
 
   const removeFromCart = (id) => {
-  setCart(cart.filter((item) => item.id !== id));
-};
-  return (
+    setCart(prev => prev.filter((item) => item.id !== id));
+  };
 
+  return (
     <BrowserRouter>
-    
-      <Navbar />
+
+      {/* NAVBAR CONTROL CENTER */}
+      <Navbar
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
+        showSearch={true}
+      />
 
       <Routes>
-        <Route path="/" element={<OffersToday addToCart={addToCart}   removeFromCart={removeFromCart}   cart={cart}/>} />
-        <Route path="/offers-today" element={<OffersToday addToCart={addToCart}   removeFromCart={removeFromCart}   cart={cart}/>} />
-        <Route path="/all-offers" element={<AllOffers addToCart={addToCart}   removeFromCart={removeFromCart}   cart={cart}/>} />
+
+        <Route
+          path="/offers-today"
+          element={
+            <OffersToday
+              products={products}
+              addToCart={addToCart}
+              removeFromCart={removeFromCart}
+              cart={cart}
+              selectedCategory={selectedCategory}
+              searchQuery={searchQuery}
+            />
+          }
+        />
+
+        <Route
+          path="/all-offers"
+          element={
+            <AllOffers
+              products={products}
+              addToCart={addToCart}
+              removeFromCart={removeFromCart}
+              cart={cart}
+              selectedCategory={selectedCategory}
+              searchQuery={searchQuery}
+            />
+          }
+        />
+
         <Route path="/cart" element={<Cart cart={cart} />} />
+
       </Routes>
+
     </BrowserRouter>
   );
 }

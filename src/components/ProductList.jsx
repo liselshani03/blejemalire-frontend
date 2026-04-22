@@ -1,4 +1,5 @@
 export default function ProductList({ products, addToCart, removeFromCart, cart }) {
+  
   return (
     <div className="product-grid">
       {products.map((p) => {

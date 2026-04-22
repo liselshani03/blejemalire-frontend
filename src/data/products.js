@@ -6,6 +6,7 @@ const products = [
         oldPrice: 1.25,
         discountEndsAt: "2026-05-17", 
         image: "/images/redbull.png",
+        category: "drink",
     },
     {
         id: 2,
@@ -14,6 +15,7 @@ const products = [
         oldPrice: 0.65,
         discountEndsAt: "2026-05-17", 
         image: "/images/coca-cola.webp",
+        category: "drink",
     },
     {
         id: 3,
@@ -22,6 +24,7 @@ const products = [
         oldPrice: 0.65,
         discountEndsAt: "2026-05-17", 
         image: "/images/fanta.png",
+        category: "drink",
     },
     {
         id: 4,
@@ -30,6 +33,7 @@ const products = [
         oldPrice: 0.25,
         discountEndsAt: "2026-05-17", 
         image: "/images/rugove.png",
+        category: "drink",
     },
     {
         id: 5,
@@ -38,6 +42,7 @@ const products = [
         oldPrice: 0.65,
         discountEndsAt: "2026-05-17", 
         image: "/images/sprite.png",
+        category: "drink",
     },
     {
         id: 6,
@@ -46,6 +51,7 @@ const products = [
         oldPrice: 34.99,
         discountEndsAt: "2026-05-17", 
         image: "/images/jackdaniels.webp",
+        category: "alcoholic-drink",
     },
     {
         id: 7,
@@ -54,6 +60,7 @@ const products = [
         oldPrice: 21.00,
         discountEndsAt: "2026-05-17", 
         image: "/images/jagermaister.png",
+        category: "alcoholic-drink",
     },
     {
         id: 8,
@@ -62,6 +69,7 @@ const products = [
         oldPrice: 0.65,
         discountEndsAt: "2026-05-17", 
         image: "/images/tonic.png",
+        category: "drink",
     },
     {
         id: 9,
@@ -70,6 +78,7 @@ const products = [
         oldPrice: 1.50,
         discountEndsAt: "2026-05-17",
         image: "/images/heineken.png",
+        category: "alcoholic-drink",
     },
     {
         id: 10,
@@ -78,6 +87,7 @@ const products = [
         oldPrice: 2.00,
         discountEndsAt: "2026-05-17", 
         image: "/images/corona.webp",
+        category: "alcoholic-drink",
     },
 
 ];
