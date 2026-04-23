@@ -8,6 +8,8 @@
 }
 
 .product-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 10px rgba(139, 94, 60, 0.3);
   transform: translateY(-4px);
   border-color: var(--primary);
 }
@@ -50,12 +52,13 @@
 
 .price {
   font-weight: bold;
+  color: #f5efe6;
 }
 
 .old-price {
   text-decoration: line-through;
-  color: red;
-  font-size: 12px;
+  color: #b08968; /* faded brown */
+  font-size: 14px;
 }
 
 /* Cart css*/
@@ -70,7 +73,7 @@
   gap: 12px;
   padding: 8px;
   font-size: 14px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #3a2a20;
 }
 .cart-img {
   width: 50px;
@@ -85,6 +88,7 @@
 .cart-price,
 .cart-discount {
   min-width: 80px;
+  color: #f5efe6;
 }
 .discountDate {
   display: flex;
@@ -92,12 +96,14 @@
   align-items: center;
   margin-bottom: 10px; 
   font-weight: italic;
-  color: white;
+  .discountDate {
+  color: #c2b3a3;
+}
 }
 
 /* butoni remove dhe add style*/
 .btn-add {
-  background: rgb(41, 146, 48);
+  background: #6b8e23;
   color: rgb(255, 255, 255);
   padding: 8px 12px;
   border: none;
@@ -106,7 +112,7 @@
 }
 
 .btn-remove {
-  background: red;
+  background: #660000;
   color: white;
   padding: 8px 12px;
   border: none;
@@ -191,12 +197,12 @@ body {
 }
 
 :root {
-  --bg: #160404;
-  --card: #1a1a1a;
-  --text: #ffffff;
-  --muted: #b3b3b3;
-  --primary: #ff3b3b;
-  --border: #2a2a2a;
+  --bg: #1c140f;           /* dark brown background */
+  --card: #2a1d16;         /* card like wood */
+  --text: #f5efe6;         /* warm white */
+  --muted: #c2b3a3;        /* soft beige */
+  --primary: #8b5e3c;      /* classic brown */
+  --border: #3a2a20;       /* subtle border */
 }
 
 h1,

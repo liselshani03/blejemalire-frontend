@@ -35,6 +35,20 @@ function App() {
       <Routes>
 
         <Route
+          path="/"
+          element={
+            <AllOffers
+              products={products}
+              addToCart={addToCart}
+              removeFromCart={removeFromCart}
+              cart={cart}
+              selectedCategory={selectedCategory}
+              searchQuery={searchQuery}
+            />
+          }
+        />
+
+        <Route
           path="/offers-today"
           element={
             <OffersToday

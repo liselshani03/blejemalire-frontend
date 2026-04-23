@@ -1,5 +1,5 @@
 export default function ProductList({ products, addToCart, removeFromCart, cart }) {
-  
+
   return (
     <div className="product-grid">
       {products.map((p) => {
@@ -14,8 +14,8 @@ export default function ProductList({ products, addToCart, removeFromCart, cart 
             </div>
       
             <div className="price-row">
-            <span className="price">€{p.price}</span>
-            <span className="old-price">€{p.oldPrice}</span>
+            <span className="price">{p.price}€</span>
+            <span className="old-price">{p.oldPrice}€</span>
             </div>
 
             <span className="discountDate"  >{p.discountEndsAt}</span>
