@@ -1,4 +1,4 @@
-import ProductList from "../components/ProductList";
+import ProductList from "../components/Product/ProductList";
 
 export default function AllOffers({
   products,
@@ -8,14 +8,13 @@ export default function AllOffers({
   selectedCategory,
   searchQuery
 }) {
-
   const filteredProducts = products.filter((p) => {
-
     const matchesCategory =
       selectedCategory === "all" || p.category === selectedCategory;
 
-    const matchesSearch =
-      p.name.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch = p.name
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
 
     return matchesCategory && matchesSearch;
   });

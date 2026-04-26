@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 import OffersToday from "./pages/OffersToday";
 import AllOffers from "./pages/AllOffers";
 import Cart from "./pages/Cart";
 import products from "./data/products";
+import Login from "./components/Auth/Login";
+import Signup from "./components/Auth/Signup";
+import ForgotPassword from "./components/Auth/ForgotPassword";
 import "./App.css";
 
 function App() {
@@ -22,17 +25,18 @@ function App() {
 
   return (
     <BrowserRouter>
-
       {/* NAVBAR CONTROL CENTER */}
-      <Navbar
+      <Navbar 
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
-        showSearch={true}
       />
 
       <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
 
         <Route
           path="/"
@@ -77,9 +81,7 @@ function App() {
         />
 
         <Route path="/cart" element={<Cart cart={cart} />} />
-
       </Routes>
-
     </BrowserRouter>
   );
 }

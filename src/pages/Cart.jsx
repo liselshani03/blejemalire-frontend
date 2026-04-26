@@ -1,5 +1,4 @@
 export default function Cart({ cart = [] }) {
-  
   return (
     <div className="cart-grid">
       {cart.map((item) => {
@@ -10,11 +9,8 @@ export default function Cart({ cart = [] }) {
         return (
           <div key={item.id} className="cart-item">
             <img className="cart-img" src={item.image} alt={item.name} />
-
             <span className="cart-name">{item.name}</span>
-
             <span className="cart-price">€{item.price}</span>
-
             <span className="cart-discount">-{discount}%</span>
           </div>
         );

@@ -1,4 +1,4 @@
-import ProductList from "../components/ProductList";
+import ProductList from "../components/Product/ProductList";
 
 export default function OffersToday({
   products,
@@ -8,16 +8,15 @@ export default function OffersToday({
   selectedCategory,
   searchQuery
 }) {
-
   const filteredProducts = products.filter((p) => {
-
     const isValid = new Date(p.discountEndsAt) >= new Date();
 
     const matchesCategory =
       selectedCategory === "all" || p.category === selectedCategory;
 
-    const matchesSearch =
-      p.name.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch = p.name
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
 
     return isValid && matchesCategory && matchesSearch;
   });
