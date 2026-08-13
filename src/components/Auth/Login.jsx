@@ -1,6 +1,44 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { authAPI } from "../../services/api";
+import { AuthService } from "../../services/authService";
+import "./Auth.css";
 
-export default function Login() {
+export default function Login({ setIsAuthenticated }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      const response = await authAPI.login(email, password);
+      
+      if (response.success && response.data.accessToken) {
+        // Save both access and refresh tokens using AuthService
+        AuthService.saveTokens(response.data.accessToken, response.data.refreshToken);
+        AuthService.saveUser(response.data.user);
+        
+        // Update parent state
+        setIsAuthenticated(true);
+        
+        // Redirect to home
+        navigate("/");
+      } else {
+        setError(response.message || "Login failed");
+      }
+    } catch (err) {
+      setError(err.message || "Login error. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="auth-page">
 
@@ -17,19 +55,29 @@ export default function Login() {
 
           <h2>Login</h2>
 
-          <input
-            type="text"
-            placeholder="Email or phone number"
-          />
+          {error && <div className="error-message">{error}</div>}
 
-          <input
-            type="password"
-            placeholder="Password"
-          />
+          <form onSubmit={handleLogin}>
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
 
-          <button className="auth-btn">
-            Log In
-          </button>
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+
+            <button className="auth-btn" disabled={loading}>
+              {loading ? "Logging in..." : "Log In"}
+            </button>
+          </form>
 
           {/* FORGOT PASSWORD */}
           <Link to="/forgot-password" className="auth-link">

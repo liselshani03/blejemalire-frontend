@@ -4,12 +4,14 @@ export default function ProductList({ products, addToCart, removeFromCart, cart 
   return (
     <div className="product-grid">
       {products.map((p) => {
-        const isInCart = cart.some(item => item.id === p.id);
+        const cartItem = Array.isArray(cart)
+        ? cart.find(item => item.product_id === p.id)
+        : null;
         return (
           <ProductCard
             key={p.id}
             p={p}
-            isInCart={isInCart}
+            cartItem={cartItem}
             addToCart={addToCart}
             removeFromCart={removeFromCart}
           />

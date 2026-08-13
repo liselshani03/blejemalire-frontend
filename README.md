@@ -1,16 +1,105 @@
-# React + Vite
+# 🛍️ Blejemalire Frontend - Price Comparison Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Professional React + Vite frontend for the Blejemalire price comparison platform.
 
-Currently, two official plugins are available:
+## 📊 Project Management
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Jira Board:** [BlejeMaLire](https://blejemalire.atlassian.net/jira/core/projects/BLEJE/list?filter=allissues&jql=project%20%3D%20%22BLEJE%22%20ORDER%20BY%20created%20DESC)
+- **Project Key:** BLEJE
+- **Status:** Active Development - Lab Course 2
 
-## React Compiler
+## 🎨 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- ✅ **User Authentication** - Sign up, login, logout
+- ✅ **Product Listing** - Browse all products with images
+- ✅ **Advanced Search** - Filter by category, price, discount
+- ✅ **Shopping Cart** - Add/remove items, manage quantities
+- ✅ **Admin Dashboard** - Product management (add, edit, delete)
+- ✅ **Discount Tracking** - Display discount end dates
+- ✅ **Professional UI** - Brown theme matching brand colors
+- ✅ **Responsive Design** - Mobile-friendly interface
 
-## Expanding the ESLint configuration
+## 🚀 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React 18** - UI framework
+- **Vite** - Build tool & dev server
+- **React Router** - Navigation
+- **Axios** - HTTP client
+- **CSS3** - Styling
+
+## 🛠️ Setup
+
+### Prerequisites
+- Node.js v16+
+- npm or yarn
+
+### Installation
+
+```bash
+# Clone and navigate
+git clone <repository-url>
+cd blejemalire-frontend
+
+# Install dependencies
+npm install
+
+# Setup environment
+cp .env.example .env
+# Update API_URL in .env
+```
+
+### Development
+
+```bash
+npm run dev
+```
+
+Runs on `http://localhost:5173`
+
+### Production Build
+
+```bash
+npm run build
+npm run preview
+```
+
+## 📁 Project Structure
+
+```
+src/
+├── components/
+│   ├── Product/
+│   │   ├── ProductCard.jsx
+│   │   └── ProductList.jsx
+│   ├── Auth/
+│   │   ├── Login.jsx
+│   │   └── Signup.jsx
+│   └── Navbar/
+│       └── Navbar.jsx
+├── pages/
+│   ├── AdminDashboard.jsx
+│   ├── HomePage.jsx
+│   ├── CartPage.jsx
+│   └── ProductDetail.jsx
+├── services/
+│   ├── api.js
+│   └── auth.js
+├── App.jsx
+├── main.jsx
+└── index.css
+```
+
+## 🔗 Backend API
+
+Connect to backend on `http://localhost:5000`
+
+Key endpoints:
+- `GET /api/products` - All products
+- `GET /api/search` - Advanced search
+- `POST /api/auth/login` - Login
+- `POST /api/admin/products` - Create product (admin)
+
+## 📄 License
+
+ISC
+

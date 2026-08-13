@@ -6,7 +6,9 @@ export default function AllOffers({
   removeFromCart,
   cart,
   selectedCategory,
-  searchQuery
+  searchQuery,
+  minPrice,
+  maxPrice
 }) {
   const filteredProducts = products.filter((p) => {
     const matchesCategory =
@@ -16,7 +18,13 @@ export default function AllOffers({
       .toLowerCase()
       .includes(searchQuery.toLowerCase());
 
-    return matchesCategory && matchesSearch;
+    // Filter by price range
+    const productPrice = parseFloat(p.price) || 0;
+    const minPriceNum = minPrice ? parseFloat(minPrice) : 0;
+    const maxPriceNum = maxPrice ? parseFloat(maxPrice) : Infinity;
+    const matchesPrice = productPrice >= minPriceNum && productPrice <= maxPriceNum;
+
+    return matchesCategory && matchesSearch && matchesPrice;
   });
 
   return (

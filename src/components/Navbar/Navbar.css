@@ -73,10 +73,74 @@
   box-shadow: 0 0 8px rgba(139, 94, 60, 0.3);
 }
 
+/* SEARCH FILTERS CONTAINER */
+.search-filters {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* PRICE FILTER */
+.price-filter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.price-filter input {
+  width: 80px;
+  height: 36px;
+  padding: 0 8px;
+  background: #3a291f;
+  border: 1px solid #5a4030;
+  color: #f5efe6;
+  border-radius: 6px;
+  outline: none;
+  font-size: 14px;
+}
+
+.price-filter input:focus {
+  border-color: #8b5e3c;
+  box-shadow: 0 0 8px rgba(139, 94, 60, 0.3);
+}
+
+.price-filter span {
+  color: #b89968;
+  font-weight: bold;
+}
+
+/* DISCOUNT FILTER */
+.discount-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: #f5efe6;
+  font-weight: 500;
+  padding: 8px 12px;
+  background: rgba(139, 94, 60, 0.2);
+  border-radius: 6px;
+  border: 1px solid #5a4030;
+  transition: all 0.3s ease;
+}
+
+.discount-filter:hover {
+  background: rgba(139, 94, 60, 0.3);
+  border-color: #8b5e3c;
+}
+
+.discount-filter input {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+}
+
 /* RIGHT LINKS */
 .nav-right {
   display: flex;
   gap: 28px; /* 🔥 slightly more space between OffersToday & Cart */
+  align-items: center;
 
   margin-left: 20px; /* 🔥 pushes whole block slightly to the right */
 }
@@ -85,9 +149,57 @@
   color: #e6d3c3;
   text-decoration: none;
   font-weight: 500;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .nav-right a:hover {
   color: #d2a679;
   text-shadow: 0 0 8px rgba(210, 166, 121, 0.3);
+}
+
+.cart-count {
+  background: #e67e22;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.user-email {
+  color: #c9a961;
+  font-size: 14px;
+}
+
+.logout-btn {
+  background: #d32f2f;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #b71c1c;
+}
+
+.admin-link {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 8px 16px;
+  border-radius: 5px;
+  color: white !important;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.admin-link:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  text-shadow: none;
 }

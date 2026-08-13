@@ -15,8 +15,10 @@
 }
 
 .product-card img {
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
   border-radius: 8px;
+  object-fit: contain;
 }
 .product-grid {
   display: grid;
@@ -31,17 +33,28 @@
   height: 40px;
   overflow: hidden;
 }
+
+.product-store {
+  display: block;
+  font-size: 13px;
+  color: #8b5e3c;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 8px;
+}
 .image-wrapper {
   width: 100%;
-  height: 140px;
+  height: 160px;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 .product-img {
   max-width: 100%;
-  max-height: 120px;
+  max-height: 100%;
   object-fit: contain;
+  object-position: center;
 }
 .price-row {
   display: flex;
@@ -61,34 +74,117 @@
   font-size: 14px;
 }
 
-/* Cart css*/
-.cart-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.cart-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 8px;
-  font-size: 14px;
-  border-bottom: 1px solid #3a2a20;
-}
-.cart-img {
-  width: 50px;
-  height: 50px;
-  object-fit: contain;
+.discount-badge {
+  color: #ff3333 !important;
+  background: transparent !important;
+  font-weight: bold !important;
+  font-size: 14px !important;
+  margin-top: 5px !important;
+  display: inline-block !important;
+  border: none !important;
+  padding: 0 !important;
 }
 
-.cart-name {
-  flex: 1;
+.discount-store {
+  display: block !important;
+  color: #ff9933 !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  margin-top: 3px !important;
+  font-style: italic;
 }
 
-.cart-price,
-.cart-discount {
-  min-width: 80px;
+/* Cart Page Wrapper */
+.cart-page-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #8b5e3c 0%, #5a3e2b 100%);
+  padding: 20px;
+}
+
+/* Cart css - Table Layout */
+.cart-table-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  overflow-x: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.empty-cart-message {
+  text-align: center;
+  color: #666;
+  padding: 20px;
+  font-size: 16px;
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.cart-table thead {
+  background: linear-gradient(135deg, #8b5e3c 0%, #5a3e2b 100%);
   color: #f5efe6;
+}
+
+.cart-table th {
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-bottom: 2px solid #8b5e3c;
+}
+
+.cart-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #e0e0e0;
+  vertical-align: middle;
+}
+
+.cart-table tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+.cart-table tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.cart-img-cell {
+  text-align: center;
+}
+
+.cart-img-small {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.cart-name-cell {
+  font-weight: 500;
+  color: #333;
+}
+
+.cart-price-cell {
+  font-weight: 500;
+  color: #333;
+}
+
+.cart-qty-cell {
+  text-align: center;
+}
+
+.cart-total-cell {
+  font-weight: bold;
+  color: #333;
+}
+
+.cart-action-cell {
+  text-align: center;
 }
 .discountDate {
   display: flex;
@@ -132,7 +228,273 @@ button:hover {
   opacity: 0.9;
 }
 
+/* e tash ktu asht per pop upin kur tndodh te productcard*/
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
 
+.modal-box {
+  background: #ef5350cc;
+  padding: 20px;
+  border-radius: 10px;
+  border: 3px solid rgba(182, 138, 26, 0.459);
+  width: 300px;
+  
+  text-align: center;
+  color: black; /* ensures ALL text inside is black */
+}
+
+/* quantity + text */
+.modal-box h3,
+.modal-box span {
+  color: black;
+}
+
+.modal-store {
+  font-size: 14px;
+  color: black;
+  margin: 8px 0;
+  font-weight: 600;
+}
+
+.modal-prices {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.modal-price {
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+}
+
+.modal-old-price {
+  font-size: 14px;
+  text-decoration: line-through;
+  color: #666;
+}
+
+.modal-discount {
+  font-size: 14px;
+  font-weight: bold;
+  color: #ff3333;
+}
+
+.modal-date {
+  font-size: 12px;
+  color: black;
+  margin: 8px 0;
+  font-style: italic;
+}
+
+/* buttons */
+.modal-actions button {
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+/* ADD TO CART */
+.modal-actions button:first-child {
+  background: #6b8e23;
+  color: white;
+}
+
+/* CANCEL */
+.modal-actions button:last-child {
+  background: #c62828;
+  color: white;
+}
+
+/* kjo asht pjesa e totalit te cart */
+.qty-control {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.cart-qty-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+
+.cart-qty-control button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #6b8e23;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.cart-qty-control button:hover {
+  background: #5a7a1f;
+  transform: scale(1.1);
+}
+
+.cart-qty-control button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: scale(1);
+}
+
+.cart-qty-control span {
+  min-width: 30px;
+  text-align: center;
+  font-weight: 500;
+  color: black;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.cart-summary {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.cart-summary-box {
+  background: #d19b13a3;
+  color: white;
+  padding: 25px 40px;
+  border-radius: 12px;
+  text-align: center;
+  min-width: 250px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.cart--box h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  opacity: 0.8;
+}
+
+.cart-total-big {
+  font-size: 32px;
+  font-weight: bold;
+  color: #000000;
+  margin: 10px 0;
+}
+
+.cart-subtext {
+  font-size: 12px;
+  opacity: 0.6;
+}
+/* tash butoni te carti*/
+.trash-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  transition: 0.2s;
+  padding: 4px 8px;
+}
+
+.trash-btn:hover {
+  transform: scale(1.2);
+}
+
+.trash-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* CART EXPORT BUTTONS */
+.cart-export-section {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.export-label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+.export-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.export-btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  min-width: 80px;
+}
+
+.export-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.excel-btn {
+  background: #1F7E3B;
+  color: white;
+}
+
+.excel-btn:hover:not(:disabled) {
+  background: #155c2e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(31, 126, 59, 0.3);
+}
+
+.csv-btn {
+  background: #4472C4;
+  color: white;
+}
+
+.csv-btn:hover:not(:disabled) {
+  background: #2f5299;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(68, 114, 196, 0.3);
+}
+
+.pdf-btn {
+  background: #E81F25;
+  color: white;
+}
+
+.pdf-btn:hover:not(:disabled) {
+  background: #c41819;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(232, 31, 37, 0.3);
+}
 
 /* MA POSHT UNE NUK KOM SHKRU*/
 

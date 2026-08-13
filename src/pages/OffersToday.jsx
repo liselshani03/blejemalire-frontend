@@ -6,10 +6,12 @@ export default function OffersToday({
   removeFromCart,
   cart,
   selectedCategory,
-  searchQuery
+  searchQuery,
+  minPrice,
+  maxPrice
 }) {
   const filteredProducts = products.filter((p) => {
-    const isValid = new Date(p.discountEndsAt) >= new Date();
+    const isValid = new Date(p.discount_ends_at) >= new Date();
 
     const matchesCategory =
       selectedCategory === "all" || p.category === selectedCategory;
@@ -18,7 +20,13 @@ export default function OffersToday({
       .toLowerCase()
       .includes(searchQuery.toLowerCase());
 
-    return isValid && matchesCategory && matchesSearch;
+    // Filter by price range
+    const productPrice = parseFloat(p.price) || 0;
+    const minPriceNum = minPrice ? parseFloat(minPrice) : 0;
+    const maxPriceNum = maxPrice ? parseFloat(maxPrice) : Infinity;
+    const matchesPrice = productPrice >= minPriceNum && productPrice <= maxPriceNum;
+
+    return isValid && matchesCategory && matchesSearch && matchesPrice;
   });
 
   return (

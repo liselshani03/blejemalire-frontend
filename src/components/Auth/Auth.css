@@ -115,3 +115,28 @@
   width: 100%;
   border: 1px solid var(--border);
 }
+
+/* FORM */
+.auth-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ERROR MESSAGE */
+.error-message {
+  background: #fee;
+  color: #d32f2f;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #d32f2f;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* DISABLED BUTTON */
+.auth-btn:disabled,
+.auth-btn-secondary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

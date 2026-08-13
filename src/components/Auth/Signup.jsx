@@ -1,7 +1,47 @@
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { authAPI } from "../../services/api";
 import "./Auth.css";
-import { Link } from "react-router-dom";
 
 export default function Signup() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+
+    if (password.length < 8) {
+      setError("Password must be at least 8 characters");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const response = await authAPI.signup(email, password);
+      
+      if (response.success) {
+        navigate("/login");
+      } else {
+        setError(response.message || "Signup failed");
+      }
+    } catch (err) {
+      setError(err.message || "Signup error. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="auth-page">
 
@@ -16,12 +56,37 @@ export default function Signup() {
 
           <h2>Create Account</h2>
 
-          <input type="text" placeholder="Full name" />
-          <input type="text" placeholder="Email or phone" />
-          <input type="password" placeholder="Password" />
-          <input type="password" placeholder="Confirm password" />
+          {error && <div className="error-message">{error}</div>}
 
-          <button className="auth-btn">Sign Up</button>
+          <form onSubmit={handleSignup}>
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+
+            <input
+              type="password"
+              placeholder="Password (min 8 chars)"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+
+            <button className="auth-btn" disabled={loading}>
+              {loading ? "Creating account..." : "Sign Up"}
+            </button>
+          </form>
 
           <Link to="/login" className="auth-link">
             Already have an account? Login
